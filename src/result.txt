@@ -24,3 +24,15 @@ key: T
 key: E
 key: S
 key: T
+key: D
+key: F
+key: D
+key: F
+key: Back
+key: Back
+key: Back
+key: Back
+key: Tab
+key: Back
+key: Space
+key: Back
