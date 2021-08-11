@@ -12,6 +12,10 @@ glob_string = ""
 glob_shift = False
 # indicates state of caps lock. 0:lower / 1:upper
 glob_caps_stat = win32api.GetKeyState(win32con.VK_CAPITAL)
+
+"""
+Need to add OEMs.... ex) [];',./\
+"""
 comb_keys = {
     "Lshift" : SIG_SHIFT,
     "Rshift" : SIG_SHIFT,
