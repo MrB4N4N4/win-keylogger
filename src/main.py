@@ -16,6 +16,7 @@ glob_caps_stat = win32api.GetKeyState(win32con.VK_CAPITAL)
 """
 Need to add OEMs.... ex) [];',./\
 """
+
 comb_keys = {
     "Lshift" : SIG_SHIFT,
     "Rshift" : SIG_SHIFT,

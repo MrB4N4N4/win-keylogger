@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pywin32 = "*"
+wheel = "*"
+# Install pyHook https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyhook
+# And use wheel to unpack .whl ex) wheel unpack pyHook-1.5.1....whl
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
