@@ -1,4 +1,4 @@
-# Available at python version 3.7 only. Because of pyHook library and it is unofficial.
+# Available at python version 2.7 only. Because of pywin32,pyHook library and it is unofficial.
 import pythoncom, pyHook # for hooking.
 import win32api, win32con # for indicate caps lock state.
 
@@ -12,12 +12,6 @@ glob_string = ""
 glob_shift = False
 # indicates state of caps lock. 0:lower / 1:upper
 glob_caps_stat = win32api.GetKeyState(win32con.VK_CAPITAL)
-
-"""
-Error
-if window name not ascii. 
-TypeError: KeyboardSwitch() missing arguments
-"""
 
 comb_keys = {
     "Lshift" : SIG_SHIFT,
@@ -67,7 +61,7 @@ special_char = {
 }
 
 
-def ProcessComb(signal):
+def process_comb(signal):
     global glob_shift
     global glob_string
 
@@ -91,7 +85,7 @@ def OnKeyboardDown(event):
     print(key, "Down")
     if key in comb_keys.keys():
         signal = comb_keys[key]
-        ProcessComb(signal)
+        process_comb(signal)
         return True
 
     if key in oem : key = oem[key]
