@@ -14,7 +14,9 @@ glob_shift = False
 glob_caps_stat = win32api.GetKeyState(win32con.VK_CAPITAL)
 
 """
-Need to add OEMs.... ex) [];',./\
+Error
+if window name not ascii. 
+it print TypeError: KeyboardSwitch() missing arguments
 """
 
 comb_keys = {
@@ -27,9 +29,20 @@ comb_keys = {
     "Back" : SIG_ERASE,
     "Capital" : None,
 }
-
-shift_num = {
-    "`" : "~",
+oem = {
+"Oem_1" : ";",
+"Oem_2" : "/",
+"Oem_3" : "`",
+"Oem_4" : "[",
+"Oem_5" : "\\",
+"Oem_6" : "]",
+"Oem_7" : "'",
+"Oem_Comma" : ",",
+"Oem_Period" : ".",
+"Oem_Minus" : "-",
+"Oem_Plus" : "="
+}
+special_char = {
     "1" : "!",
     "2" : "@",
     "3" : "#",
@@ -40,8 +53,17 @@ shift_num = {
     "8" : "*",
     "9" : "(",
     "0" : ")",
+    ";" : ":",
+    "/" : "?",
+    "`" : "~",
+    "[" : "{",
+    "\\" : "|",
+    "]" : "}",
+    "'" : "'",
+    "," : ",",
+    "." : ".",
     "-" : "_",
-    "=" : "+",
+    "=" : "+"
 }
 
 
@@ -76,7 +98,8 @@ def OnKeyboardDown(event):
         if not(glob_shift ^ glob_caps_stat): # if not(0:lower / 1:upper)
             key = key.lower()
     elif glob_shift:
-        key = shift_num[key]
+        if key in oem:key = oem[key]
+        key = special_char[key]
     glob_string += key
 # return True to pass event to other handlers.
     return True
