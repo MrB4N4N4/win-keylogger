@@ -16,9 +16,7 @@ glob_caps_stat = win32api.GetKeyState(win32con.VK_CAPITAL)
 """
 Error
 if window name not ascii. 
-it print TypeError: KeyboardSwitch() missing arguments
-;:'"
-`1234567890-=[]\;',./~!@#$%^&*()_+{}|:">?<'
+TypeError: KeyboardSwitch() missing arguments
 """
 
 comb_keys = {
