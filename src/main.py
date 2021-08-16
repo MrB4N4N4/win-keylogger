@@ -17,6 +17,8 @@ glob_caps_stat = win32api.GetKeyState(win32con.VK_CAPITAL)
 Error
 if window name not ascii. 
 it print TypeError: KeyboardSwitch() missing arguments
+;:'"
+`1234567890-=[]\;',./~!@#$%^&*()_+{}|:">?<'
 """
 
 comb_keys = {
@@ -59,9 +61,9 @@ special_char = {
     "[" : "{",
     "\\" : "|",
     "]" : "}",
-    "'" : "'",
-    "," : ",",
-    "." : ".",
+    "'" : '"',
+    "," : "<",
+    "." : ">",
     "-" : "_",
     "=" : "+"
 }
@@ -94,12 +96,14 @@ def OnKeyboardDown(event):
         ProcessComb(signal)
         return True
 
+    if key in oem : key = oem[key]
+
     if key.isalpha():
         if not(glob_shift ^ glob_caps_stat): # if not(0:lower / 1:upper)
             key = key.lower()
     elif glob_shift:
-        if key in oem:key = oem[key]
         key = special_char[key]
+
     glob_string += key
 # return True to pass event to other handlers.
     return True
